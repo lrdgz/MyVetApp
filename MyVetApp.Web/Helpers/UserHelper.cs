@@ -35,7 +35,7 @@ namespace MyVetApp.Web.Helpers
         public async Task CheckRoleAsync(string roleName)
         {
             var roleExists = await _roleManager.RoleExistsAsync(roleName);
-            if (roleExists){
+            if (!roleExists){
                 await _roleManager.CreateAsync(new IdentityRole { Name = roleName });
             }
         }
